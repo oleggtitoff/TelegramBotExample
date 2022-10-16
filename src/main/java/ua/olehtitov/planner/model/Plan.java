@@ -1,4 +1,4 @@
-package ua.olehtitov.planner;
+package ua.olehtitov.planner.model;
 
 import lombok.Data;
 
