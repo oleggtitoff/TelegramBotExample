@@ -1,7 +1,6 @@
 package ua.olehtitov.planner;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +10,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+@Slf4j
 @SpringBootApplication
 @RequiredArgsConstructor
 public class PlannerApplication {
-    private static final Logger log = LoggerFactory.getLogger(PlannerApplication.class);
     private final SimpleEchoBot simpleEchoBot;
 
     public static void main(String[] args) {
@@ -24,7 +23,6 @@ public class PlannerApplication {
     @PostConstruct
     public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        simpleEchoBot.setLog(log);
         try {
             log.info("Registering bot...");
             telegramBotsApi.registerBot(simpleEchoBot);

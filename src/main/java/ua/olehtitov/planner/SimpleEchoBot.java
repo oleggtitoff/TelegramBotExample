@@ -1,7 +1,7 @@
 package ua.olehtitov.planner;
 
 import lombok.Setter;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import lombok.RequiredArgsConstructor;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -9,13 +9,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+@Slf4j
 @Setter
 @Component
 @RequiredArgsConstructor
 public class SimpleEchoBot extends TelegramLongPollingBot {
-
     private final BotProperties botProperties;
-    Logger log;
 
     @Override
     public void onUpdateReceived(Update update) {
