@@ -1,4 +1,4 @@
-package ua.olehtitov.planner;
+package ua.olehtitov.planner.controller;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @Setter
 @Component
 @ConfigurationProperties("bot")
-public class SimpleEchoBot extends TelegramLongPollingBot {
+public class BotController extends TelegramLongPollingBot {
     private String username;
     private String token;
 
