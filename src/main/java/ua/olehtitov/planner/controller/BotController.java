@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ua.olehtitov.planner.handler.AddHandler;
 import ua.olehtitov.planner.handler.StartHandler;
 
 @Slf4j
@@ -18,9 +19,11 @@ public class BotController extends TelegramLongPollingBot {
     private String token;
 
     private StartHandler startHandler;
+    private AddHandler addHandler;
 
-    public BotController(StartHandler startHandler) {
+    public BotController(StartHandler startHandler, AddHandler addHandler) {
         this.startHandler = startHandler;
+        this.addHandler = addHandler;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class BotController extends TelegramLongPollingBot {
     private void dispatch(String string) {
         switch (string) {
             case "/start" -> startHandler.handle();
-            case "/add" -> log.info("/add command");
+            case "/add" -> addHandler.handle();
             case "/show" -> log.info("/show command");
             default -> log.info("not a command");
         }
