@@ -20,6 +20,7 @@ public class BotController extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if (hasMessageWithText(update)) {
             logMessage(update.getMessage());
+            dispatch(update.getMessage().getText());
         } else {
             log.warn("Unexpected update from user");
         }
@@ -35,6 +36,15 @@ public class BotController extends TelegramLongPollingBot {
         String text = message.getText();
 
         log.info("[{}, {}] : {}", chatId, userFirstName, text);
+    }
+
+    private void dispatch(String string) {
+        switch (string) {
+            case "/start" -> log.info("/start command");
+            case "/add" -> log.info("/add command");
+            case "/show" -> log.info("/show command");
+            default -> log.info("not a command");
+        }
     }
 
     @Override
