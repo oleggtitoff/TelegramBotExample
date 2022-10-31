@@ -8,6 +8,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ua.olehtitov.planner.handler.AddHandler;
+import ua.olehtitov.planner.handler.ShowHandler;
 import ua.olehtitov.planner.handler.StartHandler;
 
 @Slf4j
@@ -20,10 +21,13 @@ public class BotController extends TelegramLongPollingBot {
 
     private StartHandler startHandler;
     private AddHandler addHandler;
+    private ShowHandler showHandler;
 
-    public BotController(StartHandler startHandler, AddHandler addHandler) {
+    public BotController(StartHandler startHandler, AddHandler addHandler,
+                         ShowHandler showHandler) {
         this.startHandler = startHandler;
         this.addHandler = addHandler;
+        this.showHandler = showHandler;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class BotController extends TelegramLongPollingBot {
         switch (string) {
             case "/start" -> startHandler.handle();
             case "/add" -> addHandler.handle();
-            case "/show" -> log.info("/show command");
+            case "/show" -> showHandler.handle();
             default -> log.info("not a command");
         }
     }
