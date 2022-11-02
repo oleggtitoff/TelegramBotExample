@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class StartHandler {
+public class StartHandler implements Handler{
     public void handle() {
         log.info("/start command was triggered. Inside Start handler");
     }

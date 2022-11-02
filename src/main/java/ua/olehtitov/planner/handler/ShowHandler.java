@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class ShowHandler {
+public class ShowHandler implements Handler{
     public void handle() {
         log.info("/show command was triggered. Inside Show handler");
     }
