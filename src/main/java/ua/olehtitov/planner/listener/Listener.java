@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ua.olehtitov.planner.controller.Dispatcher;
+import ua.olehtitov.planner.dispatcher.Dispatcher;
 
 @Slf4j
 @Setter

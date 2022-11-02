@@ -1,4 +1,4 @@
-package ua.olehtitov.planner.controller;
+package ua.olehtitov.planner.dispatcher;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
