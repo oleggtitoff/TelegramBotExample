@@ -7,9 +7,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ua.olehtitov.planner.handler.AddHandler;
-import ua.olehtitov.planner.handler.ShowHandler;
-import ua.olehtitov.planner.handler.StartHandler;
 
 @Slf4j
 @Setter
@@ -19,22 +16,17 @@ public class BotController extends TelegramLongPollingBot {
     private String username;
     private String token;
 
-    private StartHandler startHandler;
-    private AddHandler addHandler;
-    private ShowHandler showHandler;
+    private Dispatcher dispatcher;
 
-    public BotController(StartHandler startHandler, AddHandler addHandler,
-                         ShowHandler showHandler) {
-        this.startHandler = startHandler;
-        this.addHandler = addHandler;
-        this.showHandler = showHandler;
+    public BotController(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
     }
 
     @Override
     public void onUpdateReceived(Update update) {
         if (hasMessageWithText(update)) {
             logMessage(update.getMessage());
-            dispatch(update.getMessage().getText());
+            dispatcher.dispatch(update.getMessage().getText());
         } else {
             log.warn("Unexpected update from user");
         }
@@ -50,15 +42,6 @@ public class BotController extends TelegramLongPollingBot {
         String text = message.getText();
 
         log.info("[{}, {}] : {}", chatId, userFirstName, text);
-    }
-
-    private void dispatch(String string) {
-        switch (string) {
-            case "/start" -> startHandler.handle();
-            case "/add" -> addHandler.handle();
-            case "/show" -> showHandler.handle();
-            default -> log.info("not a command");
-        }
     }
 
     @Override
