@@ -1,4 +1,4 @@
-package ua.olehtitov.planner.controller;
+package ua.olehtitov.planner.listener;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -7,18 +7,19 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ua.olehtitov.planner.controller.Dispatcher;
 
 @Slf4j
 @Setter
 @Component
 @ConfigurationProperties("bot")
-public class BotController extends TelegramLongPollingBot {
+public class Listener extends TelegramLongPollingBot {
     private String username;
     private String token;
 
     private Dispatcher dispatcher;
 
-    public BotController(Dispatcher dispatcher) {
+    public Listener(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
     }
 
