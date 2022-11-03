@@ -27,7 +27,7 @@ public class Listener extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if (hasMessageWithText(update)) {
             logMessage(update.getMessage());
-            dispatcher.dispatch(update.getMessage().getText());
+            dispatcher.dispatch(update.getMessage());
         } else {
             log.warn("Unexpected update from user");
         }
