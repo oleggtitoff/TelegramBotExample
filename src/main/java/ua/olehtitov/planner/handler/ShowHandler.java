@@ -13,7 +13,7 @@ public class ShowHandler implements Handler {
         return isCommand(message, command);
     }
 
-    public void handle() {
+    public void handle(Message message) {
         log.info("/show command was triggered. Inside Show handler");
     }
 }

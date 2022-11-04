@@ -4,7 +4,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 public interface Handler {
     boolean isApplicable(Message message);
-    void handle();
+    void handle(Message message);
 
     default boolean isCommand(Message message, String command) {
         return message.isCommand() && message.getText().equals(command);

@@ -22,7 +22,7 @@ public class Dispatcher {
 
         for (Handler handler : handlers) {
             if (handler.isApplicable(message)) {
-                handler.handle();
+                handler.handle(message);
                 handled = true;
             }
         }
