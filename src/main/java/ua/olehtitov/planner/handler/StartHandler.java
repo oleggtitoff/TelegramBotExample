@@ -12,7 +12,7 @@ public class StartHandler implements Handler {
     private static final String START_MESSAGE = "Привіт! Цей бот дозволяє додавати та " +
             "переглядати ваші плани.";
 
-    Sender sender;
+    private final Sender sender;
 
     public StartHandler(Sender sender) {
         this.sender = sender;
