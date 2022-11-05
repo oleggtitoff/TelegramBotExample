@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
+import ua.olehtitov.planner.model.Notebook;
+import ua.olehtitov.planner.sender.Sender;
 
 import java.util.Collections;
 
@@ -17,7 +19,7 @@ public class ShowHandlerTests {
 
     @BeforeEach
     void init() {
-        showHandler = new ShowHandler();
+        showHandler = new ShowHandler(new Notebook(), new Sender());
         messageEntity = new MessageEntity();
         messageEntity.setOffset(0);
         message = new Message();
