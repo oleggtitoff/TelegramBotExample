@@ -1,0 +1,1 @@
+Deprecated. Decided not to use the Telegram bot as a frontend because Telegram is peace of shit. Maybe some time will be switched to using a bot in another messenger. For now switched to an Android application that will be developed in another repo.
